@@ -18,7 +18,6 @@
 */
 use std::collections::HashSet;
 
-
 pub fn num_unique_emails(emails: Vec<String>) -> i32 {
     let mut uniques: HashSet<String> = HashSet::new();
 
