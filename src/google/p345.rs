@@ -39,7 +39,6 @@ pub fn reverse_vowels(s: String) -> String {
         last_index -= 1;
     }
 
-
     return res.into_iter().collect()
 }
 
