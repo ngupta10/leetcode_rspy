@@ -14,34 +14,11 @@
  */
 
 pub fn is_power_of_two(n: i32) -> bool {
-    if n == 1 {
-        return true
-    }
-
     if n <= 0 {
         return false
     }
 
-    let mut modder = 2;
-    let mut num = n.abs().clone();
-    let mut modders = vec![modder];
-
-    while num > modder {
-        if (num % modder) == 0 {
-            num /= modder;
-        } else {
-            return false
-        }
-        modder *= 2;
-        modders.push(modder);
-    }
-
-    let rem = num % modder;
-    if modders.contains(&rem) || rem == 0 {
-        return true
-    }
-
-    return false
+    return (n & (n-1)) == 0
 
 }
 
