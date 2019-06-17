@@ -7,3 +7,4 @@ pub mod p415;
 pub mod p231;
 pub mod p326;
 pub mod p345;
+pub mod p832;
