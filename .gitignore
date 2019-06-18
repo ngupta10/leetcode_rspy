@@ -1,2 +1,7 @@
 /target
 **/*.rs.bk
+*.py
+*.ipynb
+__pycache__/
+*.pdf
+*.gv
