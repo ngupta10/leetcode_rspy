@@ -76,7 +76,8 @@ mod test {
     #[test]
     fn example2() {
         let iterator = BSTIterator::new(root);
-        iterator.next();    // return 3
+        let next = iterator.next();    // return 3
+        assert_eq!(next, 3);
         iterator.next();    // return 7
         iterator.hasNext(); // return true
         iterator.next();    // return 9
