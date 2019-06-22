@@ -72,4 +72,19 @@ mod test {
         println!("root: {:?}", root);
         assert_eq!(1, 1);
     }
+
+    #[test]
+    fn example2() {
+        let iterator = BSTIterator::new(root);
+        iterator.next();    // return 3
+        iterator.next();    // return 7
+        iterator.hasNext(); // return true
+        iterator.next();    // return 9
+        iterator.hasNext(); // return true
+        iterator.next();    // return 15
+        iterator.hasNext(); // return true
+        iterator.next();    // return 20
+        iterator.hasNext(); // return false
+    }
+
 }
