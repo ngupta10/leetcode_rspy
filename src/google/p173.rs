@@ -76,16 +76,15 @@ mod test {
     #[test]
     fn example2() {
         let iterator = BSTIterator::new(root);
-        let next = iterator.next();    // return 3
-        assert_eq!(next, 3);
-        iterator.next();    // return 7
-        iterator.hasNext(); // return true
-        iterator.next();    // return 9
-        iterator.hasNext(); // return true
-        iterator.next();    // return 15
-        iterator.hasNext(); // return true
-        iterator.next();    // return 20
-        iterator.hasNext(); // return false
+        assert_eq!(iterator.next(), 3);         // return 3
+        assert_eq!(iterator.next(), 7);         // return 7
+        assert_eq!(iterator.hasNext(), true);   // return true
+        assert_eq!(iterator.next(), 9);         // return 9
+        assert_eq!(iterator.hasNext(), true);   // return true
+        assert_eq!(iterator.next(), 15);        // return 15
+        assert_eq!(iterator.hasNext(), true);   // return true
+        assert_eq!(iterator.next(), 20);        // return 20
+        assert_eq!(iterator.hasNext(), false);  // return false
     }
 
 }
