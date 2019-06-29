@@ -82,6 +82,40 @@ impl BinTree {
     }
 }
 
+#[derive(Debug)]
+pub struct BSTIterator {
+    nodes: Vec<i32>
+}
+
+impl BSTIterator {
+    pub fn new(root: Node) -> Self {
+        let mut stack: Vec<i32> = vec![];
+        let _nodes = BSTIterator::_in_order_traverse(root, &mut stack);
+        BSTIterator {
+            nodes: stack
+        }
+    }
+
+    pub fn _in_order_traverse(root: Node, stack: &mut Vec<i32>) -> Vec<i32> {
+        match root {
+            None => vec![],
+            Some(node) => {
+                BSTIterator::_in_order_traverse(node.as_ref().borrow().clone().left, stack);
+                stack.push(node.borrow().val);
+                BSTIterator::_in_order_traverse(node.as_ref().borrow().clone().right, stack)
+            }
+        }
+    }
+
+    pub fn has_next(&self) -> bool {
+        return self.nodes.len() != 0;
+    }
+
+    pub fn next(&mut self) -> i32 {
+        self.nodes.remove(0)
+    }
+}
+
 #[cfg(test)]
 mod test {
     use super::*;
@@ -103,8 +137,15 @@ mod test {
         for val in values {
             tree.insert(val);
         }
-        println!("tree: {:#?}", tree);
-        // let iter = BSTIterator::new(tree.root);
-        // println!("BSTIterator: {:?}", iter);
+        let mut iter = BSTIterator::new(tree.root);
+        assert_eq!(iter.next(), 3);
+        assert_eq!(iter.next(), 7);
+        assert_eq!(iter.has_next(), true);
+        assert_eq!(iter.next(), 9);
+        assert_eq!(iter.has_next(), true);
+        assert_eq!(iter.next(), 15);
+        assert_eq!(iter.has_next(), true);
+        assert_eq!(iter.next(), 20);
+        assert_eq!(iter.has_next(), false);
     }
 }
